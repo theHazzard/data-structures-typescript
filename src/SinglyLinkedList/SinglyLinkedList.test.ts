@@ -69,3 +69,36 @@ test("should add items to the beginning of the list with unshift", () => {
   expect(sll.tail?.value).toBe(16);
   expect(sll.length).toBe(2);
 });
+
+test("should return the correct node using the index with get", () => {
+  const sll = new SinglyLinkedList();
+  sll.push(15);
+  sll.push(16);
+
+  let value = sll.get(0)?.value;
+  expect(value).toBe(15);
+
+  value = sll.get(1)?.value;
+  expect(value).toBe(16);
+
+  value = sll.get(2);
+  expect(value).toBeUndefined();
+});
+
+test("should change the value of a node using set", () => {
+  const sll = new SinglyLinkedList();
+  sll.push(15);
+  sll.push(16);
+
+  let value = sll.get(0)?.value;
+  expect(value).toBe(15);
+
+  sll.set(0, 14);
+
+  value = sll.get(0)?.value;
+  expect(value).toBe(14);
+
+  sll.set(1, 15);
+  value = sll.get(1)?.value;
+  expect(value).toBe(15);
+});
