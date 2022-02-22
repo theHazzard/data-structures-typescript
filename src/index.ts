@@ -1,1 +1,1 @@
-import { SinglyLinkedList } from "./SinglyLinkedList";
+import { SinglyLinkedList } from "./SinglyLinkedList/SinglyLinkedList";

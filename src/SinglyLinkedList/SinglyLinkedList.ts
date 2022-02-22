@@ -40,6 +40,7 @@ export class SinglyLinkedList<T> {
     if (!this._head) {
       return undefined;
     }
+    debugger;
     if (this._length === 1) {
       const oldHead = this._head;
       this._head = null;
@@ -117,5 +118,21 @@ export class SinglyLinkedList<T> {
     elem.value = value;
 
     return elem;
+  }
+
+  insert(index: number, value: T): ListNode<T> | undefined {
+    if (index > this._length || index < 0 || !this._head) {
+      return undefined;
+    }
+
+    let elem = this._head;
+    for (let i = 0; i < index - 1; i++) {
+      elem = elem.next!;
+    }
+
+    const newElem = new ListNode(value);
+    newElem.next = elem.next;
+    elem.next = newElem;
+    this._length++;
   }
 }
