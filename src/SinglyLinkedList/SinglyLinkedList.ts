@@ -40,6 +40,7 @@ export class SinglyLinkedList<T> {
     if (!this._head) {
       return undefined;
     }
+    debugger;
 
     if (this._length === 1) {
       const oldHead = this._head;
@@ -119,7 +120,6 @@ export class SinglyLinkedList<T> {
   }
 
   insert(index: number, value: T): this | undefined {
-    debugger;
     if (index > this._length || index < 0) {
       return undefined;
     }
@@ -132,12 +132,33 @@ export class SinglyLinkedList<T> {
       return this.push(value);
     }
 
-    let elem = this.get(index - 1);
+    const elem = this.get(index - 1);
 
     const newElem = new ListNode(value);
     newElem.next = elem!.next;
     elem!.next = newElem;
     this._length++;
     return this;
+  }
+
+  remove(index: number): ListNode<T> | undefined {
+    debugger;
+    if (!this._head || index > this._length - 1 || index < 0) {
+      return undefined;
+    }
+
+    if (index === 0) {
+      return this.shift();
+    }
+
+    if (index === this._length - 1) {
+      return this.pop();
+    }
+
+    const prevElem = this.get(index - 1)!;
+    const elem = prevElem.next!;
+    prevElem.next = elem.next || null;
+    this._length--;
+    return elem;
   }
 }

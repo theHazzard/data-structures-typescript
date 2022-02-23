@@ -121,3 +121,29 @@ test("should insert a value in a specific position with insert", () => {
 
   expect(testedEl.next).toBeNull();
 });
+
+test("should remove items by index with the remove method", () => {
+  const sll = new SinglyLinkedList<number>();
+  sll.push(15);
+  sll.push(16);
+  sll.push(17);
+
+  let removedElem = sll.remove(1);
+  expect(removedElem!.value).toBe(16);
+  expect(sll.head!.value).toBe(15);
+  expect(sll.tail!.value).toBe(17);
+  expect(sll.length).toBe(2);
+  expect(sll.head?.next?.value).toBe(17);
+
+  removedElem = sll.remove(1);
+  expect(removedElem!.value).toBe(17);
+  expect(sll.head!.value).toBe(15);
+  expect(sll.length).toBe(1);
+  expect(sll.tail!.value).toBe(15);
+
+  removedElem = sll.remove(0);
+  expect(removedElem!.value).toBe(15);
+  expect(sll.head).toBeNull();
+  expect(sll.tail).toBeNull();
+  expect(sll.length).toBe(0);
+});
