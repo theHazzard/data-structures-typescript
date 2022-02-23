@@ -159,4 +159,41 @@ export class SinglyLinkedList<T> {
     this._length--;
     return elem;
   }
+
+  immutableReverse(): SinglyLinkedList<T> | undefined {
+    if (!this._head) {
+      return undefined;
+    }
+
+    const newList = new SinglyLinkedList<T>();
+    let head = this._head;
+    while (head.next) {
+      newList.unshift(head.value);
+      head = head.next;
+    }
+
+    newList.unshift(head.value);
+    return newList;
+  }
+
+  reverse(): this | undefined {
+    if (!this._head) {
+      return undefined;
+    }
+
+    let node: ListNode<T> | null = this._head;
+    this._head = this._tail;
+    this._tail = node;
+    let prev = null;
+    let next = null;
+
+    for (let x = 0; x < this._length; x++) {
+      next = node.next!;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+
+    return this;
+  }
 }

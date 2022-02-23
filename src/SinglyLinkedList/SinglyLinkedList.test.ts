@@ -147,3 +147,33 @@ test("should remove items by index with the remove method", () => {
   expect(sll.tail).toBeNull();
   expect(sll.length).toBe(0);
 });
+
+test("should reverse the list returning a new one if using immutableReverse", () => {
+  const sll = new SinglyLinkedList<number>();
+  sll.push(15);
+  sll.push(16);
+  sll.push(17);
+
+  const reversedSll = sll.immutableReverse()!;
+
+  let elem = reversedSll.head!;
+  expect(elem.value).toBe(17);
+
+  elem = elem.next!;
+  expect(elem.value).toBe(16);
+
+  elem = elem.next!;
+  expect(elem.value).toBe(15);
+});
+
+test("should reverse the list over itself using reverse", () => {
+  const sll = new SinglyLinkedList<number>();
+  sll.push(15);
+  sll.push(16);
+  sll.push(17);
+  sll.reverse();
+
+  expect(sll.head?.value).toBe(17);
+  expect(sll.tail?.value).toBe(15);
+  expect(sll.get(1)?.value).toBe(16);
+});
