@@ -40,7 +40,6 @@ export class SinglyLinkedList<T> {
     if (!this._head) {
       return undefined;
     }
-    debugger;
 
     if (this._length === 1) {
       const oldHead = this._head;
@@ -142,7 +141,6 @@ export class SinglyLinkedList<T> {
   }
 
   remove(index: number): ListNode<T> | undefined {
-    debugger;
     if (!this._head || index > this._length - 1 || index < 0) {
       return undefined;
     }
