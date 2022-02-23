@@ -22,7 +22,7 @@ export class DoublyLinkedList<T> {
     return this._tail;
   }
 
-  push(value: T) {
+  push(value: T): this {
     const newNode = new ListNode(value);
     if (this._length === 0) {
       this._head = newNode;
@@ -35,5 +35,6 @@ export class DoublyLinkedList<T> {
     }
 
     this._length++;
+    return this;
   }
 }
