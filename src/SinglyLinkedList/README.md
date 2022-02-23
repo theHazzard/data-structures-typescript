@@ -6,6 +6,12 @@ Linked Lists consist of nodes, and each **node** has a **value** and a **pointer
 
 ![Singly Link Lists](../../assets/SingleLinkedList.png)
 
+### Notes
+- It's a good alternative to arrays when insertion and deletion at the beginning is frequently required
+- Array contains a built in index, Linked lists does not
+- The idea of list data structure that consists of nodes is the fundation for other data structures like Stacks and Queues
+
+
 ### Lists
 
 - Do not have indexes
