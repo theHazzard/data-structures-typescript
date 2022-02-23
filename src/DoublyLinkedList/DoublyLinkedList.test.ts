@@ -23,7 +23,7 @@ test("should be able to push an item to the end using push", () => {
   expect(dll.head?.next?.prev?.value).toBe(15);
   expect(dll.head?.next?.next).toBeNull();
 
-  dll.push(17);
+  const returnedDll = dll.push(17);
   expect(dll.head?.value).toBe(15);
   expect(dll.tail?.value).toBe(17);
   expect(dll.length).toBe(3);
@@ -33,4 +33,5 @@ test("should be able to push an item to the end using push", () => {
   expect(dll.head?.next?.next?.value).toBe(17);
   expect(dll.head?.next?.next?.prev?.value).toBe(16);
   expect(dll.head?.next?.next?.next).toBeNull();
+  expect(returnedDll).toBe(dll);
 });

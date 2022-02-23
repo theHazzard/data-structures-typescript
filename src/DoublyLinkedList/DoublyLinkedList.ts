@@ -6,9 +6,9 @@ class ListNode<T> {
 }
 
 export class DoublyLinkedList<T> {
-  _head: ListNode<T> | null = null;
-  _tail: ListNode<T> | null = null;
-  _length: number = 0;
+  private _head: ListNode<T> | null = null;
+  private _tail: ListNode<T> | null = null;
+  private _length: number = 0;
 
   get length() {
     return this._length;
