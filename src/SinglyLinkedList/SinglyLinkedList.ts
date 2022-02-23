@@ -1,4 +1,4 @@
-class ListNode<T> {
+export class ListNode<T> {
   next: ListNode<T> | null = null;
 
   constructor(public value: T) {}
@@ -40,7 +40,7 @@ export class SinglyLinkedList<T> {
     if (!this._head) {
       return undefined;
     }
-    debugger;
+
     if (this._length === 1) {
       const oldHead = this._head;
       this._head = null;
@@ -110,29 +110,34 @@ export class SinglyLinkedList<T> {
       return undefined;
     }
 
-    let elem = this._head;
-    while (index !== 0) {
-      elem = elem.next!;
-      index--;
+    let elem = this.get(index)!;
+    if (elem) {
+      elem.value = value;
     }
-    elem.value = value;
 
     return elem;
   }
 
-  insert(index: number, value: T): ListNode<T> | undefined {
-    if (index > this._length || index < 0 || !this._head) {
+  insert(index: number, value: T): this | undefined {
+    debugger;
+    if (index > this._length || index < 0) {
       return undefined;
     }
 
-    let elem = this._head;
-    for (let i = 0; i < index - 1; i++) {
-      elem = elem.next!;
+    if (index === 0) {
+      return this.unshift(value);
     }
 
+    if (index === this._length) {
+      return this.push(value);
+    }
+
+    let elem = this.get(index - 1);
+
     const newElem = new ListNode(value);
-    newElem.next = elem.next;
-    elem.next = newElem;
+    newElem.next = elem!.next;
+    elem!.next = newElem;
     this._length++;
+    return this;
   }
 }

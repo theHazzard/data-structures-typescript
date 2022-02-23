@@ -1,4 +1,4 @@
-import { SinglyLinkedList } from "./SinglyLinkedList";
+import { ListNode, SinglyLinkedList } from "./SinglyLinkedList";
 
 test("should create an empty singly linked list", () => {
   const sll = new SinglyLinkedList();
@@ -101,4 +101,23 @@ test("should change the value of a node using set", () => {
   sll.set(1, 15);
   value = sll.get(1)?.value;
   expect(value).toBe(15);
+});
+
+test("should insert a value in a specific position with insert", () => {
+  const sll = new SinglyLinkedList<number>();
+  sll.insert(0, 15);
+  sll.insert(1, 17);
+  sll.insert(1, 16);
+
+  expect(sll.length).toBe(3);
+  let testedEl: ListNode<number> = sll.get(0)!;
+  expect(testedEl.value).toBe(15);
+
+  testedEl = testedEl.next!;
+  expect(testedEl.value).toBe(16);
+
+  testedEl = testedEl.next!;
+  expect(testedEl.value).toBe(17);
+
+  expect(testedEl.next).toBeNull();
 });
