@@ -175,5 +175,5 @@ test("should reverse the list over itself using reverse", () => {
 
   expect(sll.head?.value).toBe(17);
   expect(sll.tail?.value).toBe(15);
-  expect(sll.get(1)?.value).toBe(16);
+  expect(sll.head?.next?.value).toBe(16);
 });
