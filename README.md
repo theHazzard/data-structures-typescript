@@ -4,7 +4,8 @@ I wanted to learn about typescript, so I've started doing the basics!
 <br />
 
 ### Data Structures  
-[Singly Linked Lists](./src/SinglyLinkedList)
+[Singly Linked Lists](./src/SinglyLinkedList)  
+[Doubly Linked Lists](./src/DoublyLinkedList)  
 
 <br />
 
