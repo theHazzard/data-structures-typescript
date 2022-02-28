@@ -35,3 +35,23 @@ test("should be able to push an item to the end using push", () => {
   expect(dll.head?.next?.next?.next).toBeNull();
   expect(returnedDll).toBe(dll);
 });
+
+test("should pop an item from the end of the list", () => {
+  const dll = new DoublyLinkedList();
+
+  dll.push(15);
+  dll.push(16);
+  dll.push(17);
+
+  let listItem = dll.pop();
+  expect(listItem?.value).toBe(17);
+  listItem = dll.pop();
+  expect(listItem?.value).toBe(16);
+  listItem = dll.pop();
+  expect(listItem?.value).toBe(15);
+  listItem = dll.pop();
+  expect(listItem).toBeUndefined();
+  expect(dll.length).toBe(0);
+  expect(dll.head).toBeNull();
+  expect(dll.tail).toBeNull();
+});
