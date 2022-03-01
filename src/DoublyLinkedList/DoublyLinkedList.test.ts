@@ -61,3 +61,36 @@ test("should pop an item from the end of the list", () => {
   expect(dll.head).toBeNull();
   expect(dll.tail).toBeNull();
 });
+
+test("should remove an item from the beginning using shift", () => {
+  const dll = new DoublyLinkedList();
+  dll.push(15);
+  dll.push(16);
+  dll.push(17);
+
+  let removedValue = dll.shift();
+  expect(removedValue?.value).toBe(15);
+  expect(removedValue?.prev).toBeNull();
+  expect(removedValue?.next).toBeNull();
+  expect(dll.head?.value).toBe(16);
+  expect(dll.tail?.value).toBe(17);
+
+  removedValue = dll.shift();
+  expect(removedValue?.value).toBe(16);
+  expect(removedValue?.prev).toBeNull();
+  expect(removedValue?.next).toBeNull();
+  expect(dll.head?.value).toBe(17);
+  expect(dll.tail?.value).toBe(17);
+
+  removedValue = dll.shift();
+  expect(removedValue?.value).toBe(17);
+  expect(removedValue?.prev).toBeNull();
+  expect(removedValue?.next).toBeNull();
+
+  removedValue = dll.shift();
+  expect(removedValue).toBeUndefined();
+
+  expect(dll.length).toBe(0);
+  expect(dll.head).toBeNull();
+  expect(dll.tail).toBeNull();
+});

@@ -57,4 +57,24 @@ export class DoublyLinkedList<T> {
 
     return removedValue;
   }
+
+  shift(): ListNode<T> | undefined {
+    if (!this._head) {
+      return undefined;
+    }
+
+    const removedNode = this._head;
+    const nextValue = removedNode.next;
+    if (nextValue) {
+      nextValue.prev = null;
+      removedNode.next = null;
+      this._head = nextValue;
+    } else {
+      this._head = null;
+      this._tail = null;
+    }
+
+    this._length--;
+    return removedNode;
+  }
 }
