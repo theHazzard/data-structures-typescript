@@ -45,10 +45,16 @@ test("should pop an item from the end of the list", () => {
 
   let listItem = dll.pop();
   expect(listItem?.value).toBe(17);
+  expect(listItem?.prev).toBeNull();
+  expect(listItem?.next).toBeNull();
   listItem = dll.pop();
   expect(listItem?.value).toBe(16);
+  expect(listItem?.prev).toBeNull();
+  expect(listItem?.next).toBeNull();
   listItem = dll.pop();
   expect(listItem?.value).toBe(15);
+  expect(listItem?.prev).toBeNull();
+  expect(listItem?.next).toBeNull();
   listItem = dll.pop();
   expect(listItem).toBeUndefined();
   expect(dll.length).toBe(0);

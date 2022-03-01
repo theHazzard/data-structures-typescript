@@ -52,6 +52,7 @@ export class DoublyLinkedList<T> {
       this._head = null;
       this._tail = null;
     }
+    removedValue.prev = null;
     this._length--;
 
     return removedValue;
