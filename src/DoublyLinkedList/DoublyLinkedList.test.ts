@@ -47,14 +47,20 @@ test("should pop an item from the end of the list", () => {
   expect(listItem?.value).toBe(17);
   expect(listItem?.prev).toBeNull();
   expect(listItem?.next).toBeNull();
+  expect(dll.length).toBe(2);
+
   listItem = dll.pop();
   expect(listItem?.value).toBe(16);
   expect(listItem?.prev).toBeNull();
   expect(listItem?.next).toBeNull();
+  expect(dll.length).toBe(1);
+
   listItem = dll.pop();
   expect(listItem?.value).toBe(15);
   expect(listItem?.prev).toBeNull();
   expect(listItem?.next).toBeNull();
+  expect(dll.length).toBe(0);
+
   listItem = dll.pop();
   expect(listItem).toBeUndefined();
   expect(dll.length).toBe(0);
@@ -74,6 +80,7 @@ test("should remove an item from the beginning using shift", () => {
   expect(removedValue?.next).toBeNull();
   expect(dll.head?.value).toBe(16);
   expect(dll.tail?.value).toBe(17);
+  expect(dll.length).toBe(2);
 
   removedValue = dll.shift();
   expect(removedValue?.value).toBe(16);
@@ -81,11 +88,13 @@ test("should remove an item from the beginning using shift", () => {
   expect(removedValue?.next).toBeNull();
   expect(dll.head?.value).toBe(17);
   expect(dll.tail?.value).toBe(17);
+  expect(dll.length).toBe(1);
 
   removedValue = dll.shift();
   expect(removedValue?.value).toBe(17);
   expect(removedValue?.prev).toBeNull();
   expect(removedValue?.next).toBeNull();
+  expect(dll.length).toBe(0);
 
   removedValue = dll.shift();
   expect(removedValue).toBeUndefined();
