@@ -47,12 +47,12 @@ export class DoublyLinkedList<T> {
     const previousValue = removedValue.prev;
     if (previousValue) {
       previousValue.next = null;
+      removedValue.prev = null;
       this._tail = previousValue;
     } else {
       this._head = null;
       this._tail = null;
     }
-    removedValue.prev = null;
     this._length--;
 
     return removedValue;
