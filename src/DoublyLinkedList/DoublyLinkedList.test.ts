@@ -103,3 +103,31 @@ test("should remove an item from the beginning using shift", () => {
   expect(dll.head).toBeNull();
   expect(dll.tail).toBeNull();
 });
+
+test("should add a node at the beginning using unhsift", () => {
+  let dll = new DoublyLinkedList();
+  dll = dll.unshift(17);
+  expect(dll.head?.value).toBe(17);
+  expect(dll.tail?.value).toBe(17);
+  expect(dll.length).toBe(1);
+
+  dll = dll.unshift(16);
+  expect(dll.head?.value).toBe(16);
+  expect(dll.tail?.value).toBe(17);
+  expect(dll.length).toBe(2);
+  expect(dll.head?.next?.value).toBe(17);
+  expect(dll.head?.prev).toBeNull();
+  expect(dll.tail?.prev?.value).toBe(16);
+  expect(dll.tail?.next).toBeNull();
+
+  dll = dll.unshift(15);
+  expect(dll.head?.value).toBe(15);
+  expect(dll.tail?.value).toBe(17);
+  expect(dll.length).toBe(3);
+  expect(dll.head?.next?.value).toBe(16);
+  expect(dll.head?.next?.next?.value).toBe(17);
+  expect(dll.head?.prev).toBeNull();
+  expect(dll.tail?.prev?.value).toBe(16);
+  expect(dll.tail?.prev?.prev?.value).toBe(15);
+  expect(dll.tail?.next).toBeNull();
+});
