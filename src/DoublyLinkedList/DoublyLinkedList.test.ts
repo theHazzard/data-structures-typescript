@@ -131,3 +131,22 @@ test("should add a node at the beginning using unhsift", () => {
   expect(dll.tail?.prev?.prev?.value).toBe(15);
   expect(dll.tail?.next).toBeNull();
 });
+
+test("should be able to obtain an element with an index using get", () => {
+  const dll = new DoublyLinkedList();
+  dll.push(15);
+  dll.push(16);
+  dll.push(17);
+
+  let element = dll.get(1)!;
+  expect(element.value).toBe(16);
+
+  element = dll.get(2)!;
+  expect(element.value).toBe(17);
+
+  element = dll.get(0)!;
+  expect(element.value).toBe(15);
+
+  element = dll.get(5)!;
+  expect(element).toBeUndefined();
+});

@@ -92,4 +92,24 @@ export class DoublyLinkedList<T> {
     this._length++;
     return this;
   }
+
+  get(index: number): ListNode<T> | undefined {
+    if (!this._head || !this._tail || index < 0 || index >= this._length) {
+      return undefined;
+    }
+
+    if (index >= Math.round(this._length / 2)) {
+      let returnValue = this._tail;
+      for (let x = this._length - 1; x > index; x--) {
+        returnValue = returnValue.prev!;
+      }
+      return returnValue;
+    } else {
+      let returnValue = this._head;
+      for (let x = 0; x < index; x++) {
+        returnValue = returnValue.next!;
+      }
+      return returnValue;
+    }
+  }
 }
