@@ -121,4 +121,30 @@ export class DoublyLinkedList<T> {
 
     return node;
   }
+
+  insert(index: number, value: T): this | undefined {
+    if (index < 0 || index > this._length) {
+      return undefined;
+    }
+
+    if (index === 0) {
+      return this.unshift(value);
+    }
+    if (index === this._length) {
+      return this.push(value);
+    }
+
+    const newNode = new ListNode(value);
+    const node = this.get(index)!;
+    const prevNode = node.prev!;
+
+    newNode.next = node;
+    newNode.prev = prevNode;
+
+    prevNode.next = newNode;
+    node.prev = newNode;
+    this._length++;
+
+    return this;
+  }
 }

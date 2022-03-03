@@ -169,3 +169,33 @@ test("should change the value of a node using set", () => {
   const noVal = dll.set(3, 4);
   expect(noVal).toBeUndefined();
 });
+
+test("should add a node on a position using insert", () => {
+  const dll = new DoublyLinkedList();
+  dll.push(15);
+  dll.push(17);
+  dll.push(19);
+
+  dll.insert(0, 14);
+  expect(dll.head?.value).toBe(14);
+  expect(dll.head?.next?.value).toBe(15);
+
+  dll.insert(2, 16);
+  let elem = dll.get(2);
+  expect(elem?.value).toBe(16);
+  expect(elem?.prev?.value).toBe(15);
+  expect(elem?.next?.value).toBe(17);
+
+  dll.insert(4, 18);
+  elem = dll.get(4);
+  expect(elem?.value).toBe(18);
+  expect(elem?.prev?.value).toBe(17);
+  expect(elem?.next?.value).toBe(19);
+
+  dll.insert(6, 20);
+  elem = dll.get(6);
+  expect(elem?.value).toBe(20);
+  expect(elem?.prev?.value).toBe(19);
+  expect(elem?.next).toBeNull();
+  expect(dll.tail?.value).toBe(20);
+});
