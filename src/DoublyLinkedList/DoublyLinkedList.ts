@@ -135,14 +135,14 @@ export class DoublyLinkedList<T> {
     }
 
     const newNode = new ListNode(value);
-    const node = this.get(index)!;
-    const prevNode = node.prev!;
+    const nextNode = this.get(index)!;
+    const prevNode = nextNode.prev!;
 
-    newNode.next = node;
+    newNode.next = nextNode;
     newNode.prev = prevNode;
 
     prevNode.next = newNode;
-    node.prev = newNode;
+    nextNode.prev = newNode;
     this._length++;
 
     return this;
