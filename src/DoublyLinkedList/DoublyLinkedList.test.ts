@@ -150,3 +150,22 @@ test("should be able to obtain an element with an index using get", () => {
   element = dll.get(5)!;
   expect(element).toBeUndefined();
 });
+
+test("should change the value of a node using set", () => {
+  const dll = new DoublyLinkedList();
+  dll.push(15);
+  dll.push(16);
+  dll.push(17);
+
+  dll.set(0, 1);
+  expect(dll.head?.value).toBe(1);
+
+  dll.set(1, 2);
+  expect(dll.head?.next?.value).toBe(2);
+
+  dll.set(2, 3);
+  expect(dll.head?.next?.next?.value).toBe(3);
+
+  const noVal = dll.set(3, 4);
+  expect(noVal).toBeUndefined();
+});
