@@ -114,12 +114,10 @@ export class DoublyLinkedList<T> {
   }
 
   set(index: number, value: T): ListNode<T> | undefined {
-    if (!this._head || !this._tail || index < 0 || index >= this._length) {
-      return undefined;
+    let node = this.get(index);
+    if (node) {
+      node.value = value;
     }
-
-    let node = this.get(index)!;
-    node.value = value;
 
     return node;
   }
