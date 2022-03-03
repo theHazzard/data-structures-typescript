@@ -147,4 +147,31 @@ export class DoublyLinkedList<T> {
 
     return this;
   }
+
+  remove(index: number): ListNode<T> | undefined {
+    if (index < 0 || index >= this._length) {
+      return undefined;
+    }
+
+    if (index === 0) {
+      return this.shift();
+    }
+
+    if (index === this._length - 1) {
+      return this.pop();
+    }
+
+    const removedElem = this.get(index)!;
+    const prevElem = removedElem.prev!;
+    const nextElem = removedElem.next!;
+
+    prevElem.next = nextElem;
+    nextElem.prev = prevElem;
+
+    removedElem.next = null;
+    removedElem.prev = null;
+
+    this._length--;
+    return removedElem;
+  }
 }

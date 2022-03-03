@@ -199,3 +199,47 @@ test("should add a node on a position using insert", () => {
   expect(elem?.next).toBeNull();
   expect(dll.tail?.value).toBe(20);
 });
+
+test("should remove a node from an index using remove", () => {
+  const dll = new DoublyLinkedList();
+  dll.push(15);
+  dll.push(16);
+  dll.push(17);
+  dll.push(18);
+
+  let elem = dll.remove(-1);
+  expect(elem).toBeUndefined();
+
+  elem = dll.remove(4);
+  expect(elem).toBeUndefined();
+
+  elem = dll.remove(2)!;
+  expect(elem.next).toBeNull();
+  expect(elem.prev).toBeNull();
+  expect(elem.value).toBe(17);
+  expect(dll.length).toBe(3);
+  expect(dll.tail?.prev?.value).toBe(16);
+
+  elem = dll.remove(2)!;
+  expect(elem.next).toBeNull();
+  expect(elem.prev).toBeNull();
+  expect(elem.value).toBe(18);
+  expect(dll.length).toBe(2);
+  expect(dll.tail?.value).toBe(16);
+
+  elem = dll.remove(0)!;
+  expect(elem.next).toBeNull();
+  expect(elem.prev).toBeNull();
+  expect(elem.value).toBe(15);
+  expect(dll.length).toBe(1);
+  expect(dll.tail?.value).toBe(16);
+  expect(dll.head?.value).toBe(16);
+
+  elem = dll.remove(0)!;
+  expect(elem.next).toBeNull();
+  expect(elem.prev).toBeNull();
+  expect(elem.value).toBe(16);
+  expect(dll.length).toBe(0);
+  expect(dll.head).toBeNull();
+  expect(dll.tail).toBeNull();
+});
